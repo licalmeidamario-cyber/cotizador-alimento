@@ -9,12 +9,19 @@
     </style>
     <style>
         @media print {
+            @page { size: letter; margin: 12mm; }
             .no-print { display: none !important; }
             body[data-imp="cotizacion"] #print-cotizacion,
             body[data-imp="analisis"] #print-analisis { display: block !important; }
-            body { background-color: white; color: black; }
-            #print-cotizacion, #print-analisis { width: 100%; }
-            #print-cotizacion table, #print-analisis table { border-collapse: collapse; width: 100%; }
+            body { background-color: white !important; color: black; }
+            #print-cotizacion, #print-analisis { width: 100%; padding: 0 !important; font-size: 11px !important; line-height: 1.35 !important; color: black !important; }
+            #print-cotizacion h1, #print-analisis h1 { font-size: 19px !important; color: #047857 !important; margin: 0 0 3px !important; }
+            #print-cotizacion .text-lg, #print-analisis .text-lg { font-size: 12px !important; }
+            #print-cotizacion p, #print-analisis p { margin: 2px 0 !important; }
+            #print-cotizacion .mt-6, #print-analisis .mt-6 { margin-top: 10px !important; }
+            #print-cotizacion table, #print-analisis table { border-collapse: collapse; width: 100%; font-size: 10.5px !important; }
+            #print-cotizacion td, #print-analisis td, #print-cotizacion th, #print-analisis th { padding: 3px 6px !important; }
+            #print-cotizacion .text-\[10px\], #print-analisis .text-\[10px\], #print-cotizacion .text-\[11px\], #print-analisis .text-\[11px\] { font-size: 9px !important; }
         }
         .print-only { display: none; }
         input, select { font-size: 16px; }
@@ -518,7 +525,14 @@
 
         function imprimir(modalidad) {
             document.body.dataset.imp = modalidad;
+            const opt = optionsData[indiceImpresion];
+            const cliente = (opt && opt.cliente && opt.cliente.trim()) ? opt.cliente.trim().replace(/\s+/g, ' ') : '';
+            const hoy = new Date();
+            const f = hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + '-' + String(hoy.getDate()).padStart(2, '0');
+            const base = modalidad === 'analisis' ? 'analisis costos' : 'cotizacion alimento';
+            document.title = base + ' (' + (cliente || 'sin cliente') + ' ' + f + ')';
             window.print();
+            document.title = 'Cotizador BigPickle v3 - Multicotización Pro';
         }
 
         function actualizarAnalisis(i) {
