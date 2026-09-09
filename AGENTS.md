@@ -47,10 +47,20 @@ Negocio "Orgánicos Milenarios": producen y venden alimento balanceado para **ga
 - v1/v2 tenían bugs: pérdida de foco al escribir (oninput + render completo) — corregido con actualización selectiva y "no pisar campo enfocado".
 - v2 usaba `<select>` fijo y margen sin validar (Infinity) — resuelto.
 
+## Repositorio y despliegue (2026-09-09)
+- Repo privado GitHub: **licalmeidamario-cyber/cotizador-alimento** (rama `main`).
+- Autenticación: GitHub CLI (`gh`) en `~/.local/bin/gh`, logueado con **licalmeidamario-cyber**. `git` usa `credential.helper = !~/.local/bin/gh auth git-credential`.
+- **Tailwind offline**: el CSS ahora se compila a `tailwind` (config `tailwind.config.cjs`, `input.css`) y se inyecta en línea como `<style id="tw-offline">` dentro de `index.html`. YA NO usa CDN → funciona sin internet. Recetas: `grid-cols-[...]` arbitrarias se reemplazaron por `grid-cols-ings` (detectadas en `gridTemplateColumns`); el extractor de Tailwind NO genera valores arbitrarios con decimal/underscore, usar `safelist` o extensiones de tema.
+- Recompilar CSS tras editar clases: `./build-css.sh` (inyecta en `index.html` y copia a `www/`).
+- **App Android (APK)**: Capacitor 8.5 (requiere **JDK 21**). `www/` es el webDir; `android/` proyecto generado. Compilar: `cd android && ./gradlew assembleDebug` → `app/build/outputs/apk/debug/app-debug.apk`. Copia del APK: `~/Descargas/CotizadorBigPickle-v3.apk`.
+- **Entorno build local**: JDK 21 en conda env `j21` (`JAVA_HOME=/home/malto/miniconda3/envs/j21`), Android SDK en `~/Android/Sdk` (platforms 34/35, build-tools 34/35). Variables exportadas en `~/.zshrc`.
+- APK instalado en el celular funciona 100% sin internet (verificado con red bloqueada en Chromium).
+
 ## Pendientes / feedback pendiente del usuario
 - Usuario dice "mantener memoria persistente" (este archivo).
 - Falta conocer costos reales de maquila y empacado de la empresa (campos en 0).
 - **Despliegue**: se trabajará en el servidor de la empresa cuando el usuario termine sus pruebas locales. Recordar que `localStorage` es por navegador; si varios empleados comparten el servidor convendrá decidir si se quiere guardado compartido (backend/BD) o uno por máquina.
+- Feedback del usuario tras probar la app (aprox. 2026-09-10+).
 
 ## Notas de sesiones futuras
 - ALWAYS recordar: probar con `chromium --headless=new` + CDP (o revisar que render haga focus-retention en inputs).

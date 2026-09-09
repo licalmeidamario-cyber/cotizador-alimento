@@ -1,0 +1,24 @@
+{
+  "name": "alimento-animal-v3",
+  "version": "1.0.0",
+  "description": "Cotizador de alimento balanceado para gallina de postura (Orgánicos Milenarios). App web de un solo archivo, funciona **sin internet**, y versión Android (APK) vía Capacitor.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/licalmeidamario-cyber/cotizador-alimento.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/licalmeidamario-cyber/cotizador-alimento/issues"
+  },
+  "homepage": "https://github.com/licalmeidamario-cyber/cotizador-alimento#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/cli": "^8.5.1",
+    "@capacitor/core": "^8.5.1"
+  }
+}

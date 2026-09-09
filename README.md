@@ -19,6 +19,8 @@ El APK queda en `android/app/build/outputs/apk/debug/app-debug.apk`.
 Para instalarlo en el celular: cópialo y ábrelo (permite "instalar de orígenes desconocidos").
 Funciona completamente sin internet.
 
+Requisitos de build: JDK 21 y Android SDK (platforms y build-tools 34/35). En este equipo: `JAVA_HOME=/home/malto/miniconda3/envs/j21`, SDK en `~/Android/Sdk`.
+
 ## Recompilar el CSS
 Tras editar clases en `index.html`:
 ```
