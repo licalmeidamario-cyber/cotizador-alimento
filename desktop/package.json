@@ -7,6 +7,7 @@
   "scripts": {
     "prepare": "node scripts/prepare.cjs",
     "build:win": "node scripts/prepare.cjs && electron-builder --win portable",
+    "build:linux": "node scripts/prepare.cjs && electron-builder --linux AppImage tar.gz",
     "clean": "node -e \"require('fs').rmSync('www',{recursive:true,force:true});require('fs').rmSync('dist',{recursive:true,force:true})\""
   },
   "devDependencies": {
@@ -33,6 +34,19 @@
         }
       ],
       "signAndEditExecutable": false
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64"
+          ]
+        },
+        "tar.gz"
+      ],
+      "category": "Office",
+      "maintainer": "Orgánicos Milenarios"
     },
     "portable": {
       "artifactName": "CotizadorBigPickle-Windows-${version}.exe"
