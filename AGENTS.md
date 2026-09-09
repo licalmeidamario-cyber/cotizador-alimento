@@ -1,0 +1,58 @@
+# Proyecto: Cotizador Alimento Animal — BigPickle v3
+
+## Contexto
+Negocio "Orgánicos Milenarios": producen y venden alimento balanceado para **gallina de postura en producción**. Recetas reales de la farmacia/agroveterinaria (núcleo). Herramienta interna de cotización, será subida a servidor interno de la empresa.
+
+## Archivo principal
+- Ruta: `projects/alimento-animal-v3/index.html`
+- Stack: HTML único + Tailwind CDN + JavaScript vanilla + `localStorage` (sin build).
+- Predecesores (referencia, sin migrar): `projects/alimento-animal`, `projects/alimento-animal-copia`, `projects/alimento-animal-v2`.
+
+## Estado actual (última sesión)
+- Implementado y probado con Chromium headless. Todo funcional.
+- 3 opciones de cotización (A/B/C) persistibles en `localStorage`.
+- Usuario está probándolo; dará feedback en unos días (aprox. 2026-09-10).
+
+## Funcionalidades implementadas
+- **Multicotización**: 3 tarjetas (opciones). Se pueden **ocultar/reactivar** (botón ✕ en tarjeta + barra "Opciones ocultas"). Nunca menos de 1 visible. Selector de impresión solo lista visibles.
+- **Ingredientes**: lista base con precio y unidad:
+  Maíz 6.8/kg, Pasta de soya 10/kg, Sorgo 5/kg, Trigo 6.5/kg, Calcio fino 7/kg, Calcio grueso 7/kg, Aceite vegetal 35/L, Núcleo 82/kg.
+- **Nombre manual + guardado**: el campo es texto con autocompletado (datalist); nombres nuevos se guardan en `localStorage` (`alimento_ingredientes_v3`) y reaparecen.
+- **Precios ajustables persistentes**: si se edita un precio en pantalla, se guarda en `alimento_precios_v3` y se usa como automático (`precioMaestro`).
+- **Unidades**: kg y L (aceite). Aparecen junto al campo de cantidad y en impresiones.
+- **Decimales**: campos precio/margen/venta son texto con `inputmode="decimal"`; aceptan **coma y punto** (`num()` normaliza `,`→`.`). Cantidad: number (paso 0.01).
+- **Composición**: bloque estructurado por ingrediente con barra proporcional y % (texto 14px).
+- **Campos por opción**: margen (%), precio sugerido, precio de venta $/kg, **kilos a cotizar**, **maquila $/kg**, **empacado $/kg**.
+  - Costo total = costo ingredientes (promedio ponderado) + maquila + empacado.
+  - Precio sugerido = costo total / (1 − margen/100). Utilidad y margen real se calculan vs costo total.
+- **Ajuste a 1000 kg**: escala cantidades a exactamente 1000 (método mayor residuo).
+- **Historial**: guardar/cargar/eliminar con dedupe por nombre+cliente; deep-copy (sin referencias compartidas).
+- **Impresiones (2)**, ambas con emulación de media print y toggle `body[data-imp]`:
+  1. **Cotización** (cliente): producto terminado, precio, kilos, importe + nota "incluye maquila y empacado". Sin ingredientes.
+  2. **Análisis de costos** (uso interno): lista de ingredientes (cant/%/$/parcial), costo ingredientes, maquila, empacado, costo total, sug. margen%, venta, utilidad/kg, utilidad/ton, margen real.
+- **Responsive móvil**: sin scroll horizontal a 375px, filas de ingredientes apiladas en móvil, inputs 16px (evita zoom iOS).
+
+## Claves de localStorage
+- `alimento_options_v3` (3 opciones con recetas)
+- `historial_v3`
+- `alimento_visibles_v3`
+- `alimento_ingredientes_v3` (nombres custom)
+- `alimento_precios_v3` (precios ajustados)
+
+## Números de referencia (redondeo)
+- Receta típica prueba: maíz 420, soya 220, sorgo 150, calcio fino 100, grueso 60, aceite 30 L, núcleo 20 (1000 kg).
+- Costo antes de maquila ~$9.62/kg; maquila 0.80, empacado 0.50 → total ~$11.45/kg (sin ajuste).
+
+## Trabajo previo descartado/migrado
+- v1/v2 tenían bugs: pérdida de foco al escribir (oninput + render completo) — corregido con actualización selectiva y "no pisar campo enfocado".
+- v2 usaba `<select>` fijo y margen sin validar (Infinity) — resuelto.
+
+## Pendientes / feedback pendiente del usuario
+- Usuario dice "mantener memoria persistente" (este archivo).
+- Falta conocer costos reales de maquila y empacado de la empresa (campos en 0).
+- **Despliegue**: se trabajará en el servidor de la empresa cuando el usuario termine sus pruebas locales. Recordar que `localStorage` es por navegador; si varios empleados comparten el servidor convendrá decidir si se quiere guardado compartido (backend/BD) o uno por máquina.
+
+## Notas de sesiones futuras
+- ALWAYS recordar: probar con `chromium --headless=new` + CDP (o revisar que render haga focus-retention en inputs).
+- No usar `alert()` (rompe pruebas headless); usar toasts.
+- Mantener todo en UN solo index.html autónomo (sin dependencias locales).
