@@ -27,6 +27,15 @@ Tras editar clases en `index.html`:
 ./build-css.sh
 ```
 
+## App Windows (portátil) — Electron
+```
+cd desktop
+npm install
+npm run build:win
+```
+Genera `desktop/dist/CotizadorBigPickle-Windows-<version>.exe` (~71 MB).
+Copia ese `.exe` a cualquier PC con Windows y ejecútalo: no requiere instalación ni internet.
+
 ## Documentos de impresión
 - **Cotización** (cliente): producto, precio, kilos, importe. Sin ingredientes.
 - **Análisis de costos** (interno): composición de ingredientes, costos, margen real.

@@ -55,6 +55,7 @@ Negocio "Orgánicos Milenarios": producen y venden alimento balanceado para **ga
 - **App Android (APK)**: Capacitor 8.5 (requiere **JDK 21**). `www/` es el webDir; `android/` proyecto generado. Compilar: `cd android && ./gradlew assembleDebug` → `app/build/outputs/apk/debug/app-debug.apk`. Copia del APK: `~/Descargas/CotizadorBigPickle-v3.apk`.
 - **Entorno build local**: JDK 21 en conda env `j21` (`JAVA_HOME=/home/malto/miniconda3/envs/j21`), Android SDK en `~/Android/Sdk` (platforms 34/35, build-tools 34/35). Variables exportadas en `~/.zshrc`.
 - APK instalado en el celular funciona 100% sin internet (verificado con red bloqueada en Chromium).
+- **App Windows (Escritorio)**: Electron 33 + electron-builder (`desktop/`). `npm run build:win` → `desktop/dist/CotizadorBigPickle-Windows-<v>.exe` (portable, ~71 MB, sin instalación, sin internet). Subido a GitHub Release **v1.1.0**. Notable: `electron-builder` descarga su propio Electron de Windows por lo que el binario Linux local no es necesario; npm bloquea el postinstall de electron → aprobar con `npm install-scripts approve electron`.
 
 ## Pendientes / feedback pendiente del usuario
 - Usuario dice "mantener memoria persistente" (este archivo).
