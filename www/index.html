@@ -531,8 +531,9 @@
             const f = hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + '-' + String(hoy.getDate()).padStart(2, '0');
             const base = modalidad === 'analisis' ? 'analisis costos' : 'cotizacion alimento';
             document.title = base + ' (' + (cliente || 'sin cliente') + ' ' + f + ')';
+            const restaurar = () => { document.title = 'Cotizador BigPickle v3 - Multicotización Pro'; };
+            window.addEventListener('afterprint', restaurar, { once: true });
             window.print();
-            document.title = 'Cotizador BigPickle v3 - Multicotización Pro';
         }
 
         function actualizarAnalisis(i) {
