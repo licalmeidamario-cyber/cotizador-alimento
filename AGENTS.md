@@ -56,6 +56,7 @@ Negocio "Orgánicos Milenarios": producen y venden alimento balanceado para **ga
 - **Entorno build local**: JDK 21 en conda env `j21` (`JAVA_HOME=/home/malto/miniconda3/envs/j21`), Android SDK en `~/Android/Sdk` (platforms 34/35, build-tools 34/35). Variables exportadas en `~/.zshrc`.
 - APK instalado en el celular funciona 100% sin internet (verificado con red bloqueada en Chromium).
 - **App Windows (Escritorio)**: Electron 33 + electron-builder (`desktop/`). `npm run build:win` → `desktop/dist/CotizadorBigPickle-Windows-<v>.exe` (portable, ~71 MB, sin instalación, sin internet). Subido a GitHub Release **v1.1.0**. Notable: `electron-builder` descarga su propio Electron de Windows por lo que el binario Linux local no es necesario; npm bloquea el postinstall de electron → aprobar con `npm install-scripts approve electron`.
+- **App Linux (Escritorio)**: mismo `desktop/`, `npm run build:linux` → `CotizadorBigPickle-<v>.AppImage` (~104 MB, x64). Si el sistema destino no tiene FUSE usar `--appimage-extract-and-run`. Release **v1.2.0**. Android=APK v1.0.0, Windows=exe v1.1.0, Linux=AppImage v1.2.0.
 
 ## Pendientes / feedback pendiente del usuario
 - Usuario dice "mantener memoria persistente" (este archivo).

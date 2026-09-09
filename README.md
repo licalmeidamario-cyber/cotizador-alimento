@@ -36,6 +36,14 @@ npm run build:win
 Genera `desktop/dist/CotizadorBigPickle-Windows-<version>.exe` (~71 MB).
 Copia ese `.exe` a cualquier PC con Windows y ejecútalo: no requiere instalación ni internet.
 
+## App Linux (portátil) — AppImage
+```
+cd desktop
+npm run build:linux
+```
+Genera `desktop/dist/CotizadorBigPickle-<version>.AppImage` (~104 MB).
+En la PC destino: `chmod +x CotizadorBigPickle-1.0.0.AppImage` y ejecútalo (doble clic o `./CotizadorBigPickle-1.0.0.AppImage`). Si el sistema no tiene FUSE: `./CotizadorBigPickle-1.0.0.AppImage --appimage-extract-and-run`.
+
 ## Documentos de impresión
 - **Cotización** (cliente): producto, precio, kilos, importe. Sin ingredientes.
 - **Análisis de costos** (interno): composición de ingredientes, costos, margen real.
