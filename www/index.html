@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotizador BigPickle v3 - Multicotización Pro</title>
+    <style id="tw-offline">
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width:640px){.container{max-width:640px}}@media (min-width:768px){.container{max-width:768px}}@media (min-width:1024px){.container{max-width:1024px}}@media (min-width:1280px){.container{max-width:1280px}}@media (min-width:1536px){.container{max-width:1536px}}.visible{visibility:visible}.collapse{visibility:collapse}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0}.right-1{right:.25rem}.right-1\.5{right:.375rem}.top-1{top:.25rem}.top-1\/2{top:50%}.col-span-3{grid-column:span 3/span 3}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:.25rem}.mb-2{margin-bottom:.5rem}.mb-4{margin-bottom:1rem}.ml-2{margin-left:.5rem}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.block{display:block}.flex{display:flex}.table{display:table}.grid{display:grid}.hidden{display:none}.h-2{height:.5rem}.h-2\.5{height:.625rem}.h-full{height:100%}.w-14{width:3.5rem}.w-2{width:.5rem}.w-2\/5{width:40%}.w-full{width:100%}.min-w-0{min-width:0}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.border-collapse{border-collapse:collapse}.-translate-y-1{--tw-translate-y:-0.25rem}.-translate-y-1,.-translate-y-1\/2{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.-translate-y-1\/2{--tw-translate-y:-50%}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-cols-ings{grid-template-columns:1fr 1.1fr 1.1fr auto}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-6{gap:1.5rem}.space-y-0>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0px*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0px*var(--tw-space-y-reverse))}.space-y-0\.5>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.125rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.125rem*var(--tw-space-y-reverse))}.space-y-1>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(.25rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(.25rem*var(--tw-space-y-reverse))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis}.truncate,.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:.75rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-slate-400{--tw-border-opacity:1;border-color:rgb(148 163 184/var(--tw-border-opacity,1))}.border-slate-700{--tw-border-opacity:1;border-color:rgb(51 65 85/var(--tw-border-opacity,1))}.border-slate-800{--tw-border-opacity:1;border-color:rgb(30 41 59/var(--tw-border-opacity,1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105/var(--tw-bg-opacity,1))}.bg-emerald-700{--tw-bg-opacity:1;background-color:rgb(4 120 87/var(--tw-bg-opacity,1))}.bg-emerald-800{--tw-bg-opacity:1;background-color:rgb(6 95 70/var(--tw-bg-opacity,1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249/var(--tw-bg-opacity,1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240/var(--tw-bg-opacity,1))}.bg-slate-600{--tw-bg-opacity:1;background-color:rgb(71 85 105/var(--tw-bg-opacity,1))}.bg-slate-700{--tw-bg-opacity:1;background-color:rgb(51 65 85/var(--tw-bg-opacity,1))}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59/var(--tw-bg-opacity,1))}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42/var(--tw-bg-opacity,1))}.bg-slate-950{--tw-bg-opacity:1;background-color:rgb(2 6 23/var(--tw-bg-opacity,1))}.bg-slate-950\/90{background-color:rgba(2,6,23,.9)}.p-1{padding:.25rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.py-0{padding-top:0;padding-bottom:0}.py-0\.5{padding-top:.125rem;padding-bottom:.125rem}.py-1{padding-top:.25rem;padding-bottom:.25rem}.pr-7{padding-right:1.75rem}.pt-2{padding-top:.5rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.align-middle{vertical-align:middle}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-none{line-height:1}.tracking-wide{letter-spacing:.025em}.text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-emerald-300{--tw-text-opacity:1;color:rgb(110 231 183/var(--tw-text-opacity,1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153/var(--tw-text-opacity,1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87/var(--tw-text-opacity,1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113/var(--tw-text-opacity,1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}.text-slate-100{--tw-text-opacity:1;color:rgb(241 245 249/var(--tw-text-opacity,1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240/var(--tw-text-opacity,1))}.text-slate-300{--tw-text-opacity:1;color:rgb(203 213 225/var(--tw-text-opacity,1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184/var(--tw-text-opacity,1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139/var(--tw-text-opacity,1))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.hover\:bg-emerald-800:hover{--tw-bg-opacity:1;background-color:rgb(6 95 70/var(--tw-bg-opacity,1))}.hover\:text-red-500:hover{--tw-text-opacity:1;color:rgb(239 68 68/var(--tw-text-opacity,1))}@media (min-width:640px){.sm\:col-span-1{grid-column:span 1/span 1}.sm\:inline{display:inline}.sm\:grid-cols-ings{grid-template-columns:1fr 1.1fr 1.1fr auto}.sm\:flex-row{flex-direction:row}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-xs{font-size:.75rem;line-height:1rem}}@media (min-width:768px){.md\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    </style>
+    <style>
+        @media print {
+            .no-print { display: none !important; }
+            body[data-imp="cotizacion"] #print-cotizacion,
+            body[data-imp="analisis"] #print-analisis { display: block !important; }
+            body { background-color: white; color: black; }
+            #print-cotizacion, #print-analisis { width: 100%; }
+            #print-cotizacion table, #print-analisis table { border-collapse: collapse; width: 100%; }
+        }
+        .print-only { display: none; }
+        input, select { font-size: 16px; }
+        input[type="number"] { -moz-appearance: textfield; }
+        .toast {
+            position: fixed; bottom: 1rem; left: 50%; transform: translateX(-50%);
+            background: #065f46; color: white; padding: .5rem 1.25rem; border-radius: .5rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,.5); z-index: 50; opacity: 0;
+            transition: opacity .25s; pointer-events: none; font-weight: 600; font-size: .9rem;
+        }
+        .toast.show { opacity: 1; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 p-4">
+
+    <!-- FORMATO DE IMPRESIÓN: COTIZACIÓN -->
+    <div id="print-cotizacion" class="print-only p-8 text-black text-sm">
+        <h1 class="text-3xl font-bold text-emerald-700">Orgánicos Milenarios</h1>
+        <p class="text-lg">Cotización de Alimento Balanceado para Gallina de Postura</p>
+        <p class="mb-4"><strong>Cliente:</strong> <span id="print_cliente_val"></span></p>
+        <p><strong>Fecha:</strong> <span id="print_fecha"></span></p>
+        <p><strong>Opción:</strong> <span id="print_nombre"></span></p>
+
+        <table class="mt-4 mb-2">
+            <thead>
+                <tr class="bg-slate-100">
+                    <th class="p-2 border border-slate-400 text-left">Producto</th>
+                    <th class="p-2 border border-slate-400 text-right">Precio</th>
+                    <th class="p-2 border border-slate-400 text-right">Kilos</th>
+                    <th class="p-2 border border-slate-400 text-right">Importe</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="print_producto" class="p-2 border border-slate-400 font-bold"></td>
+                    <td id="print_precio" class="p-2 border border-slate-400 text-right"></td>
+                    <td id="print_kilos" class="p-2 border border-slate-400 text-right"></td>
+                    <td id="print_total" class="p-2 border border-slate-400 text-right font-bold"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="text-[11px] mt-2">Precio por kilo de alimento balanceado, incluye costo de maquila y empacado.</p>
+        <p class="text-[10px] text-slate-500 mt-6">Cotización generada por BigPickle® el <span id="print_fecha2"></span>.</p>
+    </div>
+
+    <!-- FORMATO DE IMPRESIÓN: ANÁLISIS COSTO VS VENTA -->
+    <div id="print-analisis" class="print-only p-8 text-black text-sm">
+        <h1 class="text-3xl font-bold text-emerald-700">Orgánicos Milenarios</h1>
+        <p class="text-lg">Análisis de Costo vs Precio de Venta <span class="text-[10px] py-0.5 px-2 rounded bg-slate-200">Uso interno</span></p>
+        <p><strong>Cliente:</strong> <span id="an_client"></span></p>
+        <p><strong>Opción:</strong> <span id="an_nombre"></span></p>
+        <p><strong>Fecha:</strong> <span id="an_fecha"></span></p>
+
+        <p class="mt-4 mb-1 font-bold">Composición y costos de ingredientes</p>
+        <table>
+            <thead>
+                <tr class="bg-slate-100">
+                    <th class="p-2 border border-slate-400 text-left">Ingrediente</th>
+                    <th class="p-2 border border-slate-400 text-right">Cantidad</th>
+                    <th class="p-2 border border-slate-400 text-right">%</th>
+                    <th class="p-2 border border-slate-400 text-right">$/unidad</th>
+                    <th class="p-2 border border-slate-400 text-right">Costo parcial</th>
+                </tr>
+            </thead>
+            <tbody id="an_body"></tbody>
+            <tfoot id="an_pie"></tfoot>
+        </table>
+
+        <p class="mt-4 mb-1 font-bold">Costos de producción vs precio de venta</p>
+        <table id="an_costos"></table>
+    </div>
+
+    <div class="max-w-6xl mx-auto space-y-4 no-print">
+        <h1 class="text-lg sm:text-2xl font-bold text-emerald-400">🥕 Cotizador <span class="hidden sm:inline">de Alimento Animal</span> <span class="text-[10px] sm:text-xs bg-slate-800 px-2 py-1 rounded-full align-middle">BigPickle v3</span></h1>
+
+        <div id="hiddenBar" class="hidden bg-slate-900 border border-slate-700 rounded-xl p-3 flex flex-wrap items-center gap-2">
+            <span class="text-xs text-slate-400 font-bold">🔄 Opciones ocultas:</span>
+            <div id="hiddenChips" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <div id="optionsContainer" class="grid gap-6">
+            <!-- Renderizado dinámico -->
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-2">
+            <button onclick="abrirHistorial()" class="flex-1 bg-slate-700 p-2 rounded font-bold">📜 Ver Historial</button>
+            <div class="flex-1 flex flex-col gap-1">
+                <select id="selectImpression" onchange="cambiarImpresion(this.value)" class="w-full bg-slate-700 p-2 rounded font-bold text-center">
+                    <option value="0">Opción A</option>
+                    <option value="1">Opción B</option>
+                    <option value="2">Opción C</option>
+                </select>
+                <button onclick="imprimir('cotizacion')" class="w-full bg-emerald-700 p-2 rounded font-bold">🖨️ Imprimir cotización</button>
+                <button onclick="imprimir('analisis')" class="w-full bg-slate-600 p-2 rounded font-bold">📊 Imprimir análisis de costos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Historial -->
+    <div id="modalHistorial" class="hidden fixed inset-0 bg-slate-950/90 p-4 overflow-y-auto no-print">
+        <div class="max-w-4xl mx-auto bg-slate-900 p-6 rounded-2xl border border-slate-700">
+            <h2 class="text-xl font-bold mb-4">Historial</h2>
+            <div id="tabla_historial" class="overflow-x-auto"></div>
+            <button onclick="cerrarHistorial()" class="mt-4 text-red-400">Cerrar</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <datalist id="listaIngredientes"></datalist>
+
+    <script>
+        const ingredientesMaestros = [
+            { nombre: 'Maíz', precio: 6.8, unidad: 'kg' },
+            { nombre: 'Pasta de soya', precio: 10.0, unidad: 'kg' },
+            { nombre: 'Sorgo', precio: 5.0, unidad: 'kg' },
+            { nombre: 'Trigo', precio: 6.5, unidad: 'kg' },
+            { nombre: 'Calcio fino', precio: 7.0, unidad: 'kg' },
+            { nombre: 'Calcio grueso', precio: 7.0, unidad: 'kg' },
+            { nombre: 'Aceite vegetal', precio: 35.0, unidad: 'L' },
+            { nombre: 'Núcleo', precio: 82.0, unidad: 'kg' }
+        ];
+
+        const LS_OPCIONES = 'alimento_options_v3';
+        const LS_HISTORIAL = 'historial_v3';
+        const LS_VISIBLES = 'alimento_visibles_v3';
+        const LS_INGREDIENTES = 'alimento_ingredientes_v3';
+        const LS_PRECIOS = 'alimento_precios_v3';
+        const TOTAL_REFERENCIA = 1000;
+
+        function opcionesDefault() {
+            return [
+                { name: 'Opción A', cliente: '', precioVenta: 10, margin: 20, kilos: 1000, maquila: 0, empacado: 0, ingredients: [{ nombre: 'Maíz', precio: 6.8, cantidad: 550, unidad: 'kg' }] },
+                { name: 'Opción B', cliente: '', precioVenta: 10, margin: 20, kilos: 1000, maquila: 0, empacado: 0, ingredients: [{ nombre: 'Maíz', precio: 6.8, cantidad: 550, unidad: 'kg' }] },
+                { name: 'Opción C', cliente: '', precioVenta: 10, margin: 20, kilos: 1000, maquila: 0, empacado: 0, ingredients: [{ nombre: 'Maíz', precio: 6.8, cantidad: 550, unidad: 'kg' }] }
+            ];
+        }
+
+        function sanitizar(opts) {
+            return (Array.isArray(opts) ? opts : []).map(opt => ({
+                name: opt.name || 'Opción',
+                cliente: opt.cliente || '',
+                precioVenta: Math.max(0, num(opt.precioVenta)),
+                margin: opt.margin === undefined ? 20 : clampMargen(num(opt.margin)),
+                kilos: opt.kilos === undefined ? 1000 : Math.max(0, num(opt.kilos)),
+                maquila: Math.max(0, num(opt.maquila)),
+                empacado: Math.max(0, num(opt.empacado)),
+                ingredients: (Array.isArray(opt.ingredients) ? opt.ingredients : []).map(ing => ({
+                    nombre: ing.nombre || 'Ingrediente',
+                    precio: Math.max(0, num(ing.precio)),
+                    cantidad: Math.max(0, num(ing.cantidad)),
+                    unidad: ing.unidad || 'kg'
+                }))
+            }));
+        }
+
+        let optionsData = sanitizar(JSON.parse(localStorage.getItem(LS_OPCIONES))).length === 3
+            ? sanitizar(JSON.parse(localStorage.getItem(LS_OPCIONES)))
+            : opcionesDefault();
+        let historial = (() => {
+            try { return Array.isArray(JSON.parse(localStorage.getItem(LS_HISTORIAL))) ? JSON.parse(localStorage.getItem(LS_HISTORIAL)) : []; }
+            catch (e) { return []; }
+        })();
+        let indiceImpresion = 0;
+        let toastTimer;
+        let visibles = (() => {
+            try {
+                const v = JSON.parse(localStorage.getItem(LS_VISIBLES));
+                if (Array.isArray(v) && v.length) return v.map(x => Boolean(x));
+            } catch (e) {}
+            return [true, true, true];
+        })();
+        while (visibles.length < 3) visibles.push(true);
+
+        let ingredientesCustom = (() => {
+            try { const v = JSON.parse(localStorage.getItem(LS_INGREDIENTES)); return Array.isArray(v) ? v.filter(n => typeof n === 'string') : []; }
+            catch (e) { return []; }
+        })();
+        let preciosAjustados = (() => {
+            try { const v = JSON.parse(localStorage.getItem(LS_PRECIOS)); return v && typeof v === 'object' ? v : {}; }
+            catch (e) { return {}; }
+        })();
+
+        function num(v) { if (typeof v === 'string') v = v.replace(',', '.').replace(/[^\d.\-]/g, '').trim(); const n = parseFloat(v); return isNaN(n) ? 0 : n; }
+        function clampMargen(m) { return Math.max(0, Math.min(99, m)); }
+        function pesoTotal(opt) { return opt.ingredients.reduce((s, i) => s + i.cantidad, 0); }
+        function precioMaestro(nombre) {
+            for (const k in preciosAjustados) {
+                if (String(k).toLowerCase() === String(nombre).toLowerCase()) return preciosAjustados[k];
+            }
+            const m = ingredientesMaestros.find(x => x.nombre.toLowerCase() === String(nombre).toLowerCase());
+            return m ? m.precio : 0;
+        }
+        function unidadMaestro(nombre) {
+            const m = ingredientesMaestros.find(x => x.nombre.toLowerCase() === String(nombre).toLowerCase());
+            return m ? m.unidad : 'kg';
+        }
+        function guardarIngredientes() { localStorage.setItem(LS_INGREDIENTES, JSON.stringify(ingredientesCustom)); }
+        function guardarPrecios() { localStorage.setItem(LS_PRECIOS, JSON.stringify(preciosAjustados)); }
+        function actualizarDatalist() {
+            const dl = document.getElementById('listaIngredientes');
+            const nombres = ingredientesMaestros.map(m => m.nombre);
+            ingredientesCustom.forEach(n => { if (!nombres.includes(n)) nombres.push(n); });
+            dl.innerHTML = nombres.map(n => `<option value="${n}"></option>`).join('');
+        }
+        function calcularCosto(opt) {
+            const p = pesoTotal(opt);
+            const c = opt.ingredients.reduce((s, i) => s + i.precio * i.cantidad, 0);
+            return p > 0 ? c / p : 0;
+        }
+        function costoTotal(opt) { return calcularCosto(opt) + num(opt.maquila) + num(opt.empacado); }
+        function indicesVisibles() { return optionsData.map((o, i) => visibles[i] ? i : -1).filter(i => i >= 0); }
+        function ocultar(i) {
+            if (indicesVisibles().length <= 1) { toast('Debe quedar al menos una opción visible'); return; }
+            visibles[i] = false;
+            if (indiceImpresion === i) indiceImpresion = indicesVisibles()[0];
+            guardarVis();
+            render();
+            toast('Opción oculta: ' + optionsData[i].name);
+        }
+        function mostrar(i) {
+            visibles[i] = true;
+            guardarVis();
+            render();
+            toast('Reactivada: ' + optionsData[i].name);
+        }
+        function guardarVis() { localStorage.setItem(LS_VISIBLES, JSON.stringify(visibles)); }
+        function guardar() { localStorage.setItem(LS_OPCIONES, JSON.stringify(optionsData)); }
+        function guardarHist() { localStorage.setItem(LS_HISTORIAL, JSON.stringify(historial)); }
+        function toast(msg) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => el.classList.remove('show'), 1800);
+        }
+
+        function render() {
+            const container = document.getElementById('optionsContainer');
+            const vis = indicesVisibles();
+            container.className = 'grid gap-6 ' + (vis.length === 1 ? 'md:grid-cols-1'
+                : vis.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3');
+            container.innerHTML = optionsData.map((opt, i) => `
+                <div id="card-${i}" class="bg-slate-900 p-4 rounded-xl border border-slate-700 flex flex-col gap-2">
+                    <div class="flex gap-2 items-center">
+                        <input type="text" placeholder="Nombre de la opción" class="flex-1 min-w-0 bg-slate-950 p-1 rounded font-bold text-emerald-300" oninput="actOpt(${i},'name',this.value)">
+                        <button title="Ocultar esta opción" onclick="ocultar(${i})" class="text-slate-500 hover:text-red-500 text-lg leading-none px-1 flex-shrink-0">✕</button>
+                    </div>
+                    <input type="text" placeholder="Cliente" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'cliente',this.value)">
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-[10px] text-slate-400">Margen (%)</label>
+                            <input type="text" inputmode="decimal" min="0" max="99" data-campo="margin" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'margin',this.value)">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-400">Precio Sugerido</label>
+                            <div class="w-full bg-slate-950 p-1 rounded text-xs font-bold text-emerald-400 js-sugerido"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-[10px] text-slate-400">Precio de Venta ($/kg)</label>
+                            <input type="text" inputmode="decimal" min="0" step="0.01" data-campo="precioVenta" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'precioVenta',this.value)">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-400">Kilos a cotizar</label>
+                            <input type="number" min="0" step="1" data-campo="kilos" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'kilos',this.value)">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="text-[10px] text-slate-400">Maquila ($/kg)</label>
+                            <input type="text" inputmode="decimal" min="0" step="0.01" data-campo="maquila" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'maquila',this.value)">
+                        </div>
+                        <div>
+                            <label class="text-[10px] text-slate-400">Empacado ($/kg)</label>
+                            <input type="text" inputmode="decimal" min="0" step="0.01" data-campo="empacado" class="w-full bg-slate-950 p-1 rounded text-xs" oninput="actOpt(${i},'empacado',this.value)">
+                        </div>
+                    </div>
+
+                    <div class="space-y-1">
+                        ${opt.ingredients.map((ing, j) => `
+                            <div class="js-ing grid grid-cols-ings sm:grid-cols-ings gap-1 items-center text-xs">
+                                <input type="text" list="listaIngredientes" placeholder="Ingrediente" class="col-span-3 sm:col-span-1 bg-slate-950 p-1 rounded w-full" onchange="actIngNombre(${i},${j},this.value)">
+                                <input type="text" inputmode="decimal" min="0" step="0.01" title="$ por unidad" data-ing-precio class="w-full bg-slate-950 p-1 rounded" oninput="actIngNum(${i},${j},'precio',this.value)">
+                                <div class="relative">
+                                    <input type="number" min="0" step="0.01" title="Cantidad" data-ing-cantidad class="w-full bg-slate-950 p-1 rounded pr-7" oninput="actIngNum(${i},${j},'cantidad',this.value)">
+                                    <span class="js-unidad absolute right-1.5 top-1/2 -translate-y-1/2 text-slate-500 text-[10px]"></span>
+                                </div>
+                                <button class="text-red-500 px-1 py-1" onclick="quitarIng(${i},${j})">×</button>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <button class="text-xs bg-emerald-800 p-1 rounded" onclick="addIng(${i})">➕ Ingrediente</button>
+
+                    <div class="text-[11px] text-slate-400 space-y-0.5 border-t border-slate-800 pt-2">
+                        <p>Peso total: <span class="js-total"></span> · Ajustar a 1000 kg: <button class="text-emerald-400" onclick="ajustar1000(${i})">factor ×<span class="js-factor"></span> ⚡</button></p>
+                        <p>Ingredientes: <span class="js-costo-ing"></span> · Maquila: <span class="js-maquila"></span> · Empacado: <span class="js-empacado"></span></p>
+                        <p class="text-slate-200 font-semibold">Costo total: <span class="js-costo-total"></span></p>
+                    </div>
+
+                    <div class="border-t border-slate-800 pt-2">
+                        <p class="text-xs font-bold uppercase tracking-wide text-slate-300 mb-1">🧪 Composición</p>
+                        <div class="js-comp space-y-1"></div>
+                    </div>
+
+                    <div class="mt-1 pt-2 border-t border-slate-700 text-sm space-y-0.5">
+                        <p>Precio venta: <span class="js-venta"></span> · Utilidad: <span class="js-utilidad"></span></p>
+                        <p>Margen real: <span class="js-margen-real"></span></p>
+                    </div>
+
+                    <button class="w-full text-xs bg-emerald-600 p-1 rounded" onclick="guardarEnHistorial(${i})">💾 Guardar en historial</button>
+                </div>
+            `).filter((_, i) => visibles[i]).join('');
+
+            optionsData.forEach((opt, i) => {
+                const c = document.getElementById('card-' + i);
+                if (!c) return;
+                c.querySelector('[placeholder="Nombre de la opción"]').value = opt.name;
+                c.querySelector('[placeholder="Cliente"]').value = opt.cliente;
+                c.querySelector('[data-campo="margin"]').value = opt.margin;
+                c.querySelector('[data-campo="precioVenta"]').value = opt.precioVenta;
+                c.querySelector('[data-campo="kilos"]').value = opt.kilos;
+                c.querySelector('[data-campo="maquila"]').value = opt.maquila;
+                c.querySelector('[data-campo="empacado"]').value = opt.empacado;
+                c.querySelectorAll('.js-ing').forEach((row, j) => {
+                    const ing = opt.ingredients[j];
+                    row.querySelector('input[list]').value = ing.nombre;
+                    row.querySelector('.js-unidad').textContent = ing.unidad || 'kg';
+                    row.querySelector('[data-ing-precio]').value = ing.precio;
+                    row.querySelector('[data-ing-cantidad]').value = ing.cantidad;
+                });
+            });
+
+            const ocultas = optionsData.map((o, i) => visibles[i] ? -1 : i).filter(i => i >= 0);
+            const hiddenBar = document.getElementById('hiddenBar');
+            if (ocultas.length) {
+                hiddenBar.classList.remove('hidden');
+                document.getElementById('hiddenChips').innerHTML = ocultas.map(i =>
+                    `<button onclick="mostrar(${i})" class="text-xs bg-slate-800 hover:bg-emerald-800 border border-slate-700 px-2 py-1 rounded-full">+ ${optionsData[i].name}</button>`).join('');
+            } else {
+                hiddenBar.classList.add('hidden');
+            }
+
+            const sel = document.getElementById('selectImpression');
+            sel.innerHTML = vis.map(k => `<option value="${k}">${optionsData[k].name}</option>`).join('');
+            if (!vis.includes(indiceImpresion)) indiceImpresion = vis[0];
+            sel.value = indiceImpresion;
+            actualizarDatalist();
+            actualizarPreview(indiceImpresion);
+            actualizarAnalisis(indiceImpresion);
+            optionsData.forEach((opt, i) => recalcular(i));
+        }
+
+        function actOpt(i, campo, val) {
+            const opt = optionsData[i];
+            if (campo === 'margin') {
+                if (val !== '') opt.margin = clampMargen(num(val));
+            } else if (campo === 'precioVenta' || campo === 'kilos' || campo === 'maquila' || campo === 'empacado') {
+                if (val !== '') opt[campo] = Math.max(0, num(val));
+            } else {
+                opt[campo] = val;
+                if (campo === 'name') {
+                    const sel = document.getElementById('selectImpression');
+                    if (sel.options[i]) sel.options[i].text = val;
+                }
+            }
+            guardar();
+            recalcular(i);
+        }
+
+        function actIngNum(i, j, campo, val) {
+            const k = campo === 'precio' ? 'precio' : 'cantidad';
+            const ing = optionsData[i].ingredients[j];
+            if (val !== '') ing[k] = Math.max(0, num(val));
+            if (campo === 'precio' && ing.nombre) {
+                preciosAjustados[ing.nombre] = ing.precio;
+                guardarPrecios();
+            }
+            guardar();
+            recalcular(i);
+        }
+
+        function actIngNombre(i, j, nombreIngrediente) {
+            const nombre = String(nombreIngrediente || '').trim();
+            if (!nombre) return;
+            const ing = optionsData[i].ingredients[j];
+            const esMaestro = ingredientesMaestros.find(m => m.nombre.toLowerCase() === nombre.toLowerCase());
+            ing.nombre = nombre;
+            ing.precio = precioMaestro(nombre);
+            ing.unidad = unidadMaestro(nombre);
+            if (!esMaestro && !ingredientesCustom.includes(nombre)) {
+                ingredientesCustom.push(nombre);
+                guardarIngredientes();
+                actualizarDatalist();
+            }
+            guardar();
+            recalcular(i);
+        }
+
+        function recalcular(i) {
+            const opt = optionsData[i];
+            const card = document.getElementById('card-' + i);
+            if (!card) return;
+            const total = pesoTotal(opt);
+            const costo = calcularCosto(opt);
+            const costoFab = costoTotal(opt);
+            const margen = clampMargen(opt.margin);
+            const sugerido = costoFab / (1 - margen / 100);
+            const util = opt.precioVenta - costoFab;
+            const set = (sel, tx) => { const el = card.querySelector(sel); if (el) el.textContent = tx; };
+
+            set('.js-total', total.toFixed(0) + ' kg');
+            set('.js-costo-ing', '$' + costo.toFixed(2) + '/kg');
+            set('.js-maquila', '$' + num(opt.maquila).toFixed(2) + '/kg');
+            set('.js-empacado', '$' + num(opt.empacado).toFixed(2) + '/kg');
+            set('.js-costo-total', '$' + costoFab.toFixed(2) + '/kg');
+            set('.js-sugerido', isFinite(sugerido) ? '$' + sugerido.toFixed(2) : '—');
+            set('.js-venta', '$' + opt.precioVenta.toFixed(2) + '/kg');
+            set('.js-utilidad', '$' + util.toFixed(2) + '/kg');
+            set('.js-margen-real', opt.precioVenta > 0 ? ((util / opt.precioVenta) * 100).toFixed(1) + '%' : '—');
+            set('.js-factor', total > 0 ? (TOTAL_REFERENCIA / total).toFixed(3) : '—');
+            set('.js-pcts', '');
+            const comp = card.querySelector('.js-comp');
+            if (comp) {
+                comp.innerHTML = opt.ingredients.map(ing => {
+                    const pct = total > 0 ? ing.cantidad / total * 100 : 0;
+                    return `<div class="flex items-center gap-2 text-sm">
+                        <span class="w-2/5 min-w-0 truncate text-slate-200">${ing.nombre}</span>
+                        <div class="flex-1 h-2.5 rounded overflow-hidden bg-slate-800">
+                            <div class="h-full rounded bg-emerald-600" style="width:${pct.toFixed(1)}%"></div>
+                        </div>
+                        <span class="w-14 text-right font-semibold text-emerald-400">${total > 0 ? pct.toFixed(1) + '%' : '—'}</span>
+                    </div>`;
+                }).join('');
+            }
+
+            const rows = card.querySelectorAll('.js-ing');
+            opt.ingredients.forEach((ing, j) => {
+                if (!rows[j]) return;
+                const precioEl = rows[j].querySelector('[data-ing-precio]');
+                const cantidadEl = rows[j].querySelector('[data-ing-cantidad]');
+                if (precioEl && precioEl !== document.activeElement) precioEl.value = ing.precio;
+                if (cantidadEl && cantidadEl !== document.activeElement) cantidadEl.value = ing.cantidad;
+                const u = rows[j].querySelector('.js-unidad');
+                if (u) u.textContent = ing.unidad || 'kg';
+            });
+
+            if (i === indiceImpresion) {
+                actualizarPreview(i);
+                actualizarAnalisis(i);
+            }
+        }
+
+        function addIng(i) {
+            optionsData[i].ingredients.push({ nombre: 'Otro', precio: 0, cantidad: 0, unidad: 'kg' });
+            guardar();
+            render();
+            toast('Ingrediente agregado');
+        }
+
+        function quitarIng(i, j) {
+            optionsData[i].ingredients.splice(j, 1);
+            if (optionsData[i].ingredients.length === 0) optionsData[i].ingredients.push({ nombre: 'Otro', precio: 0, cantidad: 0, unidad: 'kg' });
+            guardar();
+            render();
+            toast('Ingrediente eliminado');
+        }
+
+        function ajustar1000(i) {
+            const total = pesoTotal(optionsData[i]);
+            if (total <= 0) { toast('Primero añade ingredientes'); return; }
+            const factor = TOTAL_REFERENCIA / total;
+            const ings = optionsData[i].ingredients;
+            const floors = ings.map(ing => Math.floor(ing.cantidad * factor));
+            let sobrante = TOTAL_REFERENCIA - floors.reduce((a, b) => a + b, 0);
+            while (sobrante > 0) {
+                let mejor = 0;
+                for (let k = 1; k < ings.length; k++) {
+                    const fA = ings[k].cantidad * factor - Math.floor(ings[k].cantidad * factor);
+                    const fB = ings[mejor].cantidad * factor - Math.floor(ings[mejor].cantidad * factor);
+                    if (fA > fB) mejor = k;
+                }
+                floors[mejor] += 1;
+                sobrante -= 1;
+            }
+            ings.forEach((ing, j) => { ing.cantidad = floors[j]; });
+            guardar();
+            render();
+            toast('Ajustado a 1000 kg');
+        }
+
+        function cambiarImpresion(val) {
+            indiceImpresion = num(val);
+            actualizarPreview(indiceImpresion);
+            actualizarAnalisis(indiceImpresion);
+        }
+
+        function imprimir(modalidad) {
+            document.body.dataset.imp = modalidad;
+            window.print();
+        }
+
+        function actualizarAnalisis(i) {
+            const opt = optionsData[i];
+            if (!opt) return;
+            const total = pesoTotal(opt);
+            const costo = calcularCosto(opt);
+            const costoFab = costoTotal(opt);
+            const margen = clampMargen(opt.margin);
+            const sugeridoVal = costoFab / (1 - margen / 100);
+            const util = opt.precioVenta - costoFab;
+
+            document.getElementById('an_client').textContent = opt.cliente || '—';
+            document.getElementById('an_nombre').textContent = opt.name;
+            document.getElementById('an_fecha').textContent = new Date().toLocaleString();
+
+            document.getElementById('an_body').innerHTML = opt.ingredients.map(ing => `
+                <tr>
+                    <td class="p-2 border border-slate-400">${ing.nombre}</td>
+                    <td class="p-2 border border-slate-400 text-right">${ing.cantidad} ${ing.unidad || 'kg'}</td>
+                    <td class="p-2 border border-slate-400 text-right">${total > 0 ? (ing.cantidad / total * 100).toFixed(1) + '%' : '—'}</td>
+                    <td class="p-2 border border-slate-400 text-right">$${ing.precio.toFixed(2)}</td>
+                    <td class="p-2 border border-slate-400 text-right">$${(ing.precio * ing.cantidad).toFixed(2)}</td>
+                </tr>`).join('');
+            document.getElementById('an_pie').innerHTML = `
+                <tr>
+                    <td class="p-2 border border-slate-400 font-bold" colspan="2">Peso total</td>
+                    <td class="p-2 border border-slate-400 text-right font-bold" colspan="2">${total.toFixed(0)} kg</td>
+                    <td class="p-2 border border-slate-400 text-right font-bold">$${(costo * total).toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td class="p-2 border border-slate-400 font-bold" colspan="4">Costo de ingredientes</td>
+                    <td class="p-2 border border-slate-400 text-right font-bold">$${costo.toFixed(2)} /kg</td>
+                </tr>`;
+
+            const filas = [
+                ['Ingredientes', '$' + costo.toFixed(2) + ' /kg'],
+                ['Maquila', '$' + num(opt.maquila).toFixed(2) + ' /kg'],
+                ['Empacado', '$' + num(opt.empacado).toFixed(2) + ' /kg'],
+                ['Costo total de producción', '$' + costoFab.toFixed(2) + ' /kg'],
+                ['Precio sugerido (margen ' + margen + '%)', isFinite(sugeridoVal) ? '$' + sugeridoVal.toFixed(2) + ' /kg' : '—'],
+                ['Precio de venta', '$' + opt.precioVenta.toFixed(2) + ' /kg'],
+                ['Utilidad por kg', '$' + util.toFixed(2) + ' /kg'],
+                ['Utilidad por tonelada', '$' + (util * TOTAL_REFERENCIA).toFixed(2) + ' /ton'],
+                ['Margen real', opt.precioVenta > 0 ? ((util / opt.precioVenta) * 100).toFixed(1) + '%' : '—']
+            ];
+            document.getElementById('an_costos').innerHTML = filas.map((f, k) => `
+                <tr class="${k === 3 ? 'bg-slate-100 font-bold' : ''}">
+                    <td class="p-2 border border-slate-400">${f[0]}</td>
+                    <td class="p-2 border border-slate-400 text-right">${f[1]}</td>
+                </tr>`).join('');
+        }
+
+        function actualizarPreview(i) {
+            const opt = optionsData[i];
+            if (!opt) return;
+            const kilos = Math.max(0, num(opt.kilos)) || 0;
+            document.getElementById('print_cliente_val').textContent = opt.cliente || '—';
+            document.getElementById('print_nombre').textContent = opt.name;
+            document.getElementById('print_producto').textContent = 'Alimento balanceado gallina de postura';
+            document.getElementById('print_fecha').textContent = new Date().toLocaleDateString();
+            document.getElementById('print_fecha2').textContent = new Date().toLocaleString();
+            document.getElementById('print_precio').textContent = '$' + opt.precioVenta.toFixed(2) + ' /kg';
+            document.getElementById('print_kilos').textContent = kilos + ' kg';
+            document.getElementById('print_total').textContent = '$' + (opt.precioVenta * kilos).toFixed(2);
+        }
+
+        function guardarEnHistorial(i) {
+            const entrada = JSON.parse(JSON.stringify(optionsData[i]));
+            entrada.fecha = new Date().toLocaleDateString();
+            const idx = historial.findIndex(h => h.name === entrada.name && h.cliente === entrada.cliente);
+            if (idx >= 0) {
+                historial[idx] = entrada;
+                toast('Historial actualizado: ' + entrada.name);
+            } else {
+                historial.unshift(entrada);
+                toast('Guardado: ' + entrada.name);
+            }
+            guardarHist();
+        }
+
+        function abrirHistorial() {
+            document.getElementById('modalHistorial').classList.remove('hidden');
+            pintarHistorial();
+        }
+
+        function cerrarHistorial() { document.getElementById('modalHistorial').classList.add('hidden'); }
+
+        function pintarHistorial() {
+            const t = document.getElementById('tabla_historial');
+            t.innerHTML = historial.length
+                ? `<table class="w-full text-xs">
+                    <thead><tr class="text-emerald-400"><th class="text-left p-1">Fecha</th><th class="text-left p-1">Nombre</th><th class="text-left p-1">Cliente</th><th class="text-right p-1">Precio</th><th class="text-right p-1">Acciones</th></tr></thead>
+                    <tbody>${historial.map((h, i) => `
+                        <tr class="border-t border-slate-800">
+                            <td class="p-1">${h.fecha}</td>
+                            <td class="p-1">${h.name}</td>
+                            <td class="p-1">${h.cliente || '—'}</td>
+                            <td class="p-1 text-right">$${h.precioVenta.toFixed(2)}/kg</td>
+                            <td class="p-1 text-right whitespace-nowrap">
+                                <button onclick="cargarHistorial(${i})" class="text-emerald-400">Cargar</button>
+                                <button onclick="borrarHistorial(${i})" class="text-red-400 ml-2">Eliminar</button>
+                            </td>
+                        </tr>`).join('')}
+                    </tbody>
+                </table>`
+                : '<p class="text-slate-400">Sin registros guardados todavía.</p>';
+        }
+
+        function cargarHistorial(hIdx) {
+            optionsData[0] = JSON.parse(JSON.stringify(historial[hIdx]));
+            guardar();
+            render();
+            cerrarHistorial();
+            toast('Cargada en la Opción A: ' + optionsData[0].name);
+        }
+
+        function borrarHistorial(hIdx) {
+            historial.splice(hIdx, 1);
+            guardarHist();
+            pintarHistorial();
+            toast('Registro eliminado');
+        }
+
+        render();
+    </script>
+</body>
+</html>

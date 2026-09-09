@@ -1,0 +1,44 @@
+{
+  "name": "cotizador-bigpickle-desktop",
+  "version": "1.0.0",
+  "description": "Cotizador de alimento balanceado para gallina de postura (Orgánicos Milenarios)",
+  "private": true,
+  "main": "main.cjs",
+  "scripts": {
+    "prepare": "node scripts/prepare.cjs",
+    "build:win": "node scripts/prepare.cjs && electron-builder --win portable",
+    "clean": "node -e \"require('fs').rmSync('www',{recursive:true,force:true});require('fs').rmSync('dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.organicosmilenarios.cotizador",
+    "productName": "CotizadorBigPickle",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.cjs",
+      "www/**"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "portable": {
+      "artifactName": "CotizadorBigPickle-Windows-${version}.exe"
+    }
+  },
+  "allowScripts": {
+    "electron@33.4.11": true
+  }
+}
