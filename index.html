@@ -144,7 +144,7 @@
     </div>
 
     <div id="toast" class="toast"></div>
-    <div id="upd-banner" class="upd-banner hidden">
+    <div id="upd-banner" class="upd-banner" style="display:none">
         <span id="upd-txt">Actualización disponible</span>
         <button type="button" class="upd-go" onclick="instalarActualizacion()">Actualizar</button>
         <button type="button" class="upd-ok" onclick="ignorarActualizacion()">Ahora no</button>
@@ -217,13 +217,13 @@
                 if (!tieneAsset) { setVerMsg('Nueva versión v' + latest + ' disponible'); return; }
                 const banner = document.getElementById('upd-banner');
                 document.getElementById('upd-txt').textContent = 'Nueva versión v' + latest + ' disponible (tienes v' + APP_VERSION + ')';
-                banner.classList.remove('hidden');
+                banner.style.display = 'flex';
             } catch (e) { /* sin conexión o bloqueado: seguir offline */ }
         }
 
         function ignorarActualizacion() {
             const b = document.getElementById('upd-banner');
-            b.classList.add('hidden');
+            b.style.display = 'none';
             if (updInfo) {
                 const latest = String(updInfo.tag_name).replace(/^v/, '');
                 guardarIgnorada(latest);
@@ -234,7 +234,7 @@
         async function instalarActualizacion() {
             if (!updInfo) return;
             const banner = document.getElementById('upd-banner');
-            const ocultar = () => banner.classList.add('hidden');
+            const ocultar = () => banner.style.display = 'none';
             const cap = window.Capacitor && window.Capacitor.Plugins;
             if (cap) {
                 ocultar();
@@ -270,11 +270,13 @@
                 } else {
                     ocultar();
                     document.querySelector('.upd-go').disabled = false;
+                    document.getElementById('upd-txt').textContent = 'Actualización disponible';
                     toast('No se pudo actualizar: ' + (r && r.error ? r.error : 'intenta más tarde'));
                 }
             } catch (e) {
                 ocultar();
                 document.querySelector('.upd-go').disabled = false;
+                document.getElementById('upd-txt').textContent = 'Actualización disponible';
                 toast('Error al actualizar: ' + e.message);
             }
             updInfo = null;
