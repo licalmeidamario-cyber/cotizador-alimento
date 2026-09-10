@@ -60,6 +60,8 @@ Negocio "Orgánicos Milenarios": producen y venden alimento balanceado para **ga
 
 - **Impresión a PDF** (2026-09-09): se agregó `@page { size: letter; margin: 12mm; }` y CSS compacto en `@media print` (h1 19px, body 11px, tablas 10.5px, celdas `padding:3px 6px`, párrafos `margin:2px 0 !important`) para que cotización y análisis salgan en **1 sola hoja tamaño carta**. `imprimir(modalidad)` fija `document.title` a `cotizacion alimento (CLIENTE FECHA)` (fecha ISO `YYYY-MM-DD`; sin cliente usa `sin cliente`) y lo **restaura con `window.addEventListener('afterprint', ...)`**, NO después de `window.print()` (que es ASÍNCRONO → si se restaura al vuelo, el diálogo PDF lee el título viejo y guarda con el nombre equivocado). Verificado con CDP: título nuevo durante todo el diálogo, restaura al cerrar.
 
+- **Impresión en Android**: `window.print()` NO funciona en el WebView. Solución: plugin **`@capgo/capacitor-printer` v8** (compatible Capacitor 8). En `imprimir()`, si `window.Capacitor.Plugins.Printer` existe usa `printWebView({ name })` (nombre = `cotizacion alimento (CLIENTE FECHA)`); si no, `window.print()` (PC/navegador). En Android el diálogo nativo del sistema permite "Guardar como PDF". Verificado integración: `android/capacitor.settings.gradle` + `cap/go plugin` → APK creció a 7.1 MB. Test de impresión en dispositivo real: pendiente del usuario.
+
 ## Pendientes / feedback pendiente del usuario
 - Usuario dice "mantener memoria persistente" (este archivo).
 - Falta conocer costos reales de maquila y empacado de la empresa (campos en 0).
