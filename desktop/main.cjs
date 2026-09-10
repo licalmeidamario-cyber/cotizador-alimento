@@ -74,6 +74,11 @@ function resolveUrl(url, depth) {
 function download(url, dest) {
   return resolveUrl(url).then(final => new Promise((resolve, reject) => {
     const f = fs.createWriteStream(dest);
+    const timer = setTimeout(() => {
+      f.destroy();
+      try { fs.unlinkSync(dest); } catch (e) {}
+      reject(new Error('timeout de descarga'));
+    }, 90000);
     https.get(final, { headers: { 'User-Agent': UA } }, res => {
       if (res.statusCode !== 200) {
         f.destroy();
@@ -82,8 +87,12 @@ function download(url, dest) {
         return;
       }
       res.pipe(f);
-      f.on('finish', () => f.close(() => resolve()));
+      f.on('finish', () => {
+        clearTimeout(timer);
+        f.close(() => resolve());
+      });
     }).on('error', e => {
+      clearTimeout(timer);
       try { fs.unlinkSync(dest); } catch (err) {}
       reject(e);
     });
@@ -150,6 +159,11 @@ app.whenReady().then(() => {
     }
     return false;
   });
+  ipcMain.handle('update:relaunch', () => {
+    app.relaunch();
+    app.exit(0);
+    return true;
+  });
   createWindow();
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
@@ -159,3 +173,16 @@ app.whenReady().then(() => {
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
+
+const gotLock = app.requestSingleInstanceLock();
+if (!gotLock) {
+  app.quit();
+} else {
+  app.on('second-instance', () => {
+    const w = BrowserWindow.getAllWindows()[0];
+    if (w) {
+      if (w.isMinimized()) w.restore();
+      w.focus();
+    }
+  });
+}

@@ -108,7 +108,8 @@
     </div>
 
     <div class="max-w-6xl mx-auto space-y-4 no-print">
-        <h1 class="text-lg sm:text-2xl font-bold text-emerald-400">🥕 Cotizador <span class="hidden sm:inline">de Alimento Animal</span> <span class="text-[10px] sm:text-xs bg-slate-800 px-2 py-1 rounded-full align-middle">BigPickle v3</span></h1>
+        <h1 class="text-lg sm:text-2xl font-bold text-emerald-400">🥕 Cotizador <span class="hidden sm:inline">de Alimento Animal</span> <span class="text-[10px] sm:text-xs bg-slate-800 px-2 py-1 rounded-full align-middle">BigPickle v3</span> <span id="ver-chip" class="text-[10px] sm:text-xs bg-emerald-800 px-2 py-1 rounded-full align-middle">v1.4.0</span></h1>
+        <p id="ver-msg" class="text-[10px] text-slate-500"></p>
 
         <div id="hiddenBar" class="hidden bg-slate-900 border border-slate-700 rounded-xl p-3 flex flex-wrap items-center gap-2">
             <span class="text-xs text-slate-400 font-bold">🔄 Opciones ocultas:</span>
@@ -182,7 +183,19 @@
         }
 
         let updInfo = null;
+        function setVerMsg(txt) {
+            const el = document.getElementById('ver-msg');
+            if (el) el.textContent = txt || '';
+        }
+        function leerIgnorada() {
+            try { return localStorage.getItem('upd_ignorada') || ''; } catch (e) { return ''; }
+        }
+        function guardarIgnorada(v) {
+            try { localStorage.setItem('upd_ignorada', v); } catch (e) {}
+        }
         async function revisarActualizacion() {
+            const chip = document.getElementById('ver-chip');
+            if (chip) chip.textContent = 'v' + APP_VERSION;
             if (typeof navigator !== 'undefined' && !navigator.onLine) return;
             try {
                 const ctl = new AbortController();
@@ -195,10 +208,12 @@
                 if (!res.ok) return;
                 updInfo = await res.json();
                 const latest = String(updInfo.tag_name || '').replace(/^v/, '');
-                if (!latest || compararVersiones(latest, APP_VERSION) <= 0) return;
-                if (sessionStorage.getItem('upd_ignorada') === latest) return;
+                if (!latest) return;
+                const ignorada = leerIgnorada();
+                if (compararVersiones(latest, APP_VERSION) <= 0) { setVerMsg('Actualizado (v' + APP_VERSION + ')'); return; }
+                if (ignorada && compararVersiones(latest, ignorada) <= 0) { setVerMsg('Nueva versión v' + latest + ' disponible'); return; }
                 const banner = document.getElementById('upd-banner');
-                document.getElementById('upd-txt').textContent = 'Nueva versión v' + latest + ' disponible';
+                document.getElementById('upd-txt').textContent = 'Nueva versión v' + latest + ' disponible (tienes v' + APP_VERSION + ')';
                 banner.classList.remove('hidden');
             } catch (e) { /* sin conexión o bloqueado: seguir offline */ }
         }
@@ -206,17 +221,17 @@
         function ignorarActualizacion() {
             const b = document.getElementById('upd-banner');
             b.classList.add('hidden');
-            if (updInfo) sessionStorage.setItem('upd_ignorada', String(updInfo.tag_name).replace(/^v/, ''));
+            if (updInfo) {
+                const latest = String(updInfo.tag_name).replace(/^v/, '');
+                guardarIgnorada(latest);
+                setVerMsg('Nueva versión v' + latest + ' disponible');
+            }
         }
 
         async function instalarActualizacion() {
             if (!updInfo) return;
             const banner = document.getElementById('upd-banner');
-            const ocultar = () => {
-                banner.classList.add('hidden');
-                document.querySelector('.upd-go').disabled = false;
-                if (updInfo) sessionStorage.setItem('upd_ignorada', String(updInfo.tag_name).replace(/^v/, ''));
-            };
+            const ocultar = () => banner.classList.add('hidden');
             const cap = window.Capacitor && window.Capacitor.Plugins;
             if (cap) {
                 ocultar();
@@ -236,22 +251,30 @@
             document.querySelector('.upd-go').disabled = true;
             try {
                 const r = window.desktopUpdater ? await window.desktopUpdater.installUpdate() : null;
-                if (r && r.status === 'updated' && window.desktopUpdater) {
-                    ocultar();
-                    toast('Actualizado a v' + r.version);
-                    window.desktopUpdater.reloadWindow();
-                    updInfo = null;
+                if (r && r.status === 'updated') {
+                    const latest = String(updInfo.tag_name).replace(/^v/, '');
+                    guardarIgnorada(latest);
+                    setVerMsg('Actualizado a v' + (r.version || latest));
+                    if (window.desktopUpdater && window.desktopUpdater.relaunchWindow) {
+                        toast('Actualizado a v' + (r.version || latest) + '; reiniciando…');
+                        setTimeout(() => { try { window.desktopUpdater.relaunchWindow(); } catch (e) {} }, 900);
+                    } else {
+                        window.desktopUpdater.reloadWindow();
+                    }
                 } else if (!window.desktopUpdater) {
                     ocultar();
                     toast('Esta versión no soporta auto-actualizar; descarga el nuevo instalador');
                 } else {
                     ocultar();
+                    document.querySelector('.upd-go').disabled = false;
                     toast('No se pudo actualizar: ' + (r && r.error ? r.error : 'intenta más tarde'));
                 }
             } catch (e) {
                 ocultar();
+                document.querySelector('.upd-go').disabled = false;
                 toast('Error al actualizar: ' + e.message);
             }
+            updInfo = null;
         }
 
         function opcionesDefault() {
