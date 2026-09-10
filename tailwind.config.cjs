@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        ings: "1fr 1.1fr 1.1fr auto",
+        ings: "minmax(0,1fr) minmax(0,74px) minmax(0,78px) auto",
       },
     },
   },
