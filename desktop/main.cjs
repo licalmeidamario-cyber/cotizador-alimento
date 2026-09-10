@@ -144,8 +144,11 @@ app.whenReady().then(() => {
   ipcMain.handle('update:install', installUpdate);
   ipcMain.handle('update:reload', () => {
     const w = BrowserWindow.getAllWindows()[0];
-    if (w) w.loadFile(currentIndex());
-    return true;
+    if (w) {
+      w.loadFile(currentIndex()).catch(() => { app.relaunch(); app.exit(0); });
+      return true;
+    }
+    return false;
   });
   createWindow();
   app.on('activate', () => {

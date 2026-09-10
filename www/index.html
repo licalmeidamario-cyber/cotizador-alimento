@@ -211,8 +211,15 @@
 
         async function instalarActualizacion() {
             if (!updInfo) return;
+            const banner = document.getElementById('upd-banner');
+            const ocultar = () => {
+                banner.classList.add('hidden');
+                document.querySelector('.upd-go').disabled = false;
+                if (updInfo) sessionStorage.setItem('upd_ignorada', String(updInfo.tag_name).replace(/^v/, ''));
+            };
             const cap = window.Capacitor && window.Capacitor.Plugins;
             if (cap) {
+                ocultar();
                 const url = updInfo.html_url || updInfo.url;
                 if (cap.Browser && cap.Browser.open) {
                     try { cap.Browser.open({ url: url }); return; } catch (e) { toast('Abre el enlace de la versión para instalar'); }
@@ -225,24 +232,26 @@
                 enlace.remove();
                 return;
             }
-            const banner = document.getElementById('upd-banner');
             document.getElementById('upd-txt').textContent = 'Descargando actualización…';
             document.querySelector('.upd-go').disabled = true;
             try {
                 const r = window.desktopUpdater ? await window.desktopUpdater.installUpdate() : null;
                 if (r && r.status === 'updated' && window.desktopUpdater) {
+                    ocultar();
                     toast('Actualizado a v' + r.version);
                     window.desktopUpdater.reloadWindow();
                     updInfo = null;
                 } else if (!window.desktopUpdater) {
+                    ocultar();
                     toast('Esta versión no soporta auto-actualizar; descarga el nuevo instalador');
                 } else {
+                    ocultar();
                     toast('No se pudo actualizar: ' + (r && r.error ? r.error : 'intenta más tarde'));
                 }
             } catch (e) {
+                ocultar();
                 toast('Error al actualizar: ' + e.message);
             }
-            banner.classList.add('hidden');
         }
 
         function opcionesDefault() {
