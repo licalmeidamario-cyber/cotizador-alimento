@@ -209,9 +209,12 @@
                 updInfo = await res.json();
                 const latest = String(updInfo.tag_name || '').replace(/^v/, '');
                 if (!latest) return;
+                setVerMsg('Consultando…');
                 const ignorada = leerIgnorada();
                 if (compararVersiones(latest, APP_VERSION) <= 0) { setVerMsg('Actualizado (v' + APP_VERSION + ')'); return; }
                 if (ignorada && compararVersiones(latest, ignorada) <= 0) { setVerMsg('Nueva versión v' + latest + ' disponible'); return; }
+                const tieneAsset = Array.isArray(updInfo.assets) && updInfo.assets.some(a => a.name === 'www-' + latest + '.html');
+                if (!tieneAsset) { setVerMsg('Nueva versión v' + latest + ' disponible'); return; }
                 const banner = document.getElementById('upd-banner');
                 document.getElementById('upd-txt').textContent = 'Nueva versión v' + latest + ' disponible (tienes v' + APP_VERSION + ')';
                 banner.classList.remove('hidden');
