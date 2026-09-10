@@ -530,8 +530,15 @@
             const hoy = new Date();
             const f = hoy.getFullYear() + '-' + String(hoy.getMonth() + 1).padStart(2, '0') + '-' + String(hoy.getDate()).padStart(2, '0');
             const base = modalidad === 'analisis' ? 'analisis costos' : 'cotizacion alimento';
-            document.title = base + ' (' + (cliente || 'sin cliente') + ' ' + f + ')';
+            const nombre = base + ' (' + (cliente || 'sin cliente') + ' ' + f + ')';
+            document.title = nombre;
             const restaurar = () => { document.title = 'Cotizador BigPickle v3 - Multicotización Pro'; };
+            const imprimirNativo = window.Capacitor && window.Capacitor.Plugins && window.Capacitor.Plugins.Printer;
+            if (imprimirNativo) {
+                window.Capacitor.Plugins.Printer.printWebView({ name: nombre }).catch(function () { restaurar(); });
+                window.addEventListener('resume', restaurar, { once: true });
+                return;
+            }
             window.addEventListener('afterprint', restaurar, { once: true });
             window.print();
         }
